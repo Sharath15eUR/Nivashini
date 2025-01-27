@@ -13,22 +13,23 @@ Q2.Replace all occurrences of "localhost" with "127.0.0.1" in a configuration fi
 
 nivashini@nivashini-VirtualBox:~$ cd Downloads
 nivashini@nivashini-VirtualBox:~/Downloads$ ls
- config.txt   large_files.txt  'Linux Sample PDF.pdf'
+ config.txt         large_files.txt         log.txt
+ filtered_log.txt  'Linux Sample PDF.pdf'
 nivashini@nivashini-VirtualBox:~/Downloads$ cat config.txt
-server=localhost
-database=localhost
-port=5432
-username=admin
-password=secret
-host=localhost
+server = localhost
+database_host = localhost
+port = 3306
+api_url = http://localhost:8080
+log_path = /var/log/localhost 
+timeout = 30
 nivashini@nivashini-VirtualBox:~/Downloads$ sed 's/localhost/127.0.0.1/g' config.txt > updated_config.txt
 nivashini@nivashini-VirtualBox:~/Downloads$ cat updated_config.txt
-server=127.0.0.1
-database=127.0.0.1
-port=5432
-username=admin
-password=secret
-host=127.0.0.1
+server = 127.0.0.1
+database_host = 127.0.0.1
+port = 3306
+api_url = http://127.0.0.1:8080
+log_path = /var/log/127.0.0.1
+timeout = 30
 
 Q3.Use the appropriate command to search for lines containing the word "ERROR" in a log file but exclude lines containing "DEBUG". Save the results to a file named filtered_log.txt.
 
