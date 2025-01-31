@@ -1,4 +1,4 @@
-Scenario: Automating file backup and Reporting to the system. Create a shell script called "backup_manager.sh" that performs the following tasks incorporating the concepts suggested.
+Scenario: Automating file backup and Reporting to the system. Create a shell script called "backup_manager.sh" that performs the tasks incorporating the concepts suggested.
 
 
 nivashini@nivashini-VirtualBox:~$ cd Downloads
