@@ -1,0 +1,5 @@
+Error: Directory 'invalid_directory' not found!
+Error: Directory 'invalid1_directory' not found!
+Error: Option -k requires an argument.
+Error: File 'test_directory/non_existent_file' not found!
+Error: Invalid option: -n
