@@ -1,0 +1,7 @@
+Open AnyDesk.
+
+Enter the unique AnyDesk ID of the remote machine you want to connect to.
+
+If the remote user accepts the request, the session will begin, granting access to their machine.
+
+Communication occurs through the unique AnyDesk ID.

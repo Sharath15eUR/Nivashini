@@ -1,0 +1,102 @@
+Question 5: What Happens When Duplicate IPs Are Configured in a Network?
+When two devices have the same IP address, an IP conflict occurs, causing network issues.
+
+Consequences of Duplicate IP Addresses:
+Network Disruptions: Packets may not reach the intended device.
+
+Intermittent Connectivity: Conflicting devices responding to ARP requests make traffic unstable.
+
+Operating System Warnings:
+
+Windows: "IP address conflict detected" message.
+
+Linux/macOS: ARP messages or logs in system files.
+
+DHCP Conflict Detection: A DHCP server may assign an IP already in use, causing rejection.
+
+Switching Loops: Misconfigured networks with duplicate IPs on routers can create loops.
+
+Security Risks: Attackers can use duplicate IPs to hijack network sessions.
+
+Preventing and Resolving IP Conflicts:
+Use DHCP for automatic IP assignment.
+
+Enable conflict detection in the OS.
+
+Check ARP tables (arp -a) for conflicts.
+
+Avoid duplicate static IPs.
+
+Renew IP leases (ipconfig /release && ipconfig /renew on Windows, dhclient -r && dhclient on Linux).
+
+Question 7: How to Check If the Default Gateway Is Reachable?
+The default gateway is a router that forwards traffic from the local network to other networks.
+
+Steps to Check Connectivity:
+Identify the Default Gateway:
+
+Windows: ipconfig
+
+Linux/macOS: ifconfig or ip route
+
+Ping the Gateway:
+
+ping <gateway-IP>
+
+A successful response confirms connectivity.
+
+Trace the Route to the Gateway:
+
+Windows: tracert <gateway-IP>
+
+Linux/macOS: traceroute <gateway-IP>
+
+Check the ARP Table:
+
+arp -a
+
+If the gateway’s MAC address is missing or incorrect, there may be an ARP issue.
+
+Question 8: Understanding Network Interfaces
+ifconfig (Interface Configuration)
+Displays network interfaces and configurations.
+
+ifconfig -a lists all interfaces.
+
+Shows IP address, subnet mask, MAC address, MTU, and packet statistics.
+
+iwconfig (Wireless Network Configuration)
+Used for Wi-Fi interfaces.
+
+iwconfig wlan0 shows SSID, mode, frequency, signal strength, and bitrate.
+
+Question 10: How Does a DHCP Server Assign IP Addresses?
+DHCP (Dynamic Host Configuration Protocol) automatically assigns IP addresses and network settings.
+
+DHCP Process (DORA):
+Discovery: The client broadcasts a request for an IP.
+
+Offer: The server responds with an available IP.
+
+Request: The client confirms it wants the offered IP.
+
+Acknowledgment: The server assigns the IP.
+
+Checking DHCP Configuration:
+Windows: ipconfig /all
+
+Linux/macOS: dhclient -v
+
+IP Assignment Types:
+Static IP: Manually assigned (used for servers and printers).
+
+Dynamic IP: Automatically assigned by DHCP with an expiration time.
+
+Reserved IP: A DHCP server always assigns the same IP to a specific device.
+
+Common DHCP Issues:
+IP Exhaustion: No available IPs left in the DHCP pool.
+
+Lease Expiration: Device loses its IP and needs renewal.
+
+DHCP Server Unreachable: Devices fail to get an IP.
