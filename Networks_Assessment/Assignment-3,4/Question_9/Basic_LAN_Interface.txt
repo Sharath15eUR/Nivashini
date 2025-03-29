@@ -1,0 +1,85 @@
+Configuring a Basic LAN Interface Using the ip Command in Linux
+The ip command is a modern tool used to configure and manage network interfaces in Linux. Below are the steps to set up a basic LAN interface.
+
+1. Check Available Network Interfaces
+
+To list all network interfaces on your system, run:
+
+ip link show
+This will display interfaces like eth0, wlan0, or ens33.
+
+2. Assign an IP Address to an Interface
+
+To configure an IP address for a LAN interface (eth0 in this example), use:
+
+sudo ip addr add 192.168.1.100/24 dev eth0
+192.168.1.100 → Assigned IP address
+
+/24 → Subnet mask (equivalent to 255.255.255.0)
+dev eth0 → The target network interface
+
+Verify the assigned IP:
+
+ip addr show eth0
+
+3. Bring the Interface Up
+
+By default, an interface might be down. Enable it using:
+
+sudo ip link set eth0 up
+To disable it, use:
+
+sudo ip link set eth0 down
+
+4. Configure the Default Gateway
+
+To set a default gateway (e.g., 192.168.1.1):
+
+sudo ip route add default via 192.168.1.1
+Verify the routing table:
+
+ip route show
+
+5. Set Up a DNS Server (Optional)
+
+For internet access, add a DNS entry by modifying /etc/resolv.conf:
+
+echo "nameserver 8.8.8.8" | sudo tee /etc/resolv.conf
+This sets Google's public DNS.
+
+6. Make Configuration Persistent (Optional)
+
+The above settings are temporary and will reset on reboot.
+To make them persistent:
+
+On Debian/Ubuntu
+Edit the /etc/network/interfaces file:
+
+auto eth0
+iface eth0 inet static
+    address 192.168.1.100
+    netmask 255.255.255.0
+    gateway 192.168.1.1
+Restart networking:
+
+sudo systemctl restart networking
+On RHEL/CentOS
+Edit /etc/sysconfig/network-scripts/ifcfg-eth0:
+
+DEVICE=eth0
+BOOTPROTO=static
+ONBOOT=yes
+IPADDR=192.168.1.100
+NETMASK=255.255.255.0
+GATEWAY=192.168.1.1
+Restart the network service:
+
+sudo systemctl restart network
+7. Verify Connectivity
+Check connectivity with:
+
+ping -c 4 192.168.1.1
+
+
+Conclusion
+The ip command allows flexible and direct management of LAN interfaces in Linux. Using it, you can configure IP addresses, gateways, and routes efficiently.

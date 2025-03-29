@@ -1,0 +1,58 @@
+How the Linux Kernel Supports Ethernet Communication
+The Linux kernel provides robust support for Ethernet communication through its networking stack, device drivers, and protocol handling mechanisms.
+
+1. Network Interface and Drivers
+
+The kernel interacts with Network Interface Cards (NICs) using device drivers.
+Ethernet drivers are part of the kernel's netdev subsystem and handle low-level packet transmission.
+
+You can check active interfaces using:
+ip link show
+
+Common Ethernet drivers include:
+
+e1000 (Intel Ethernet)
+r8169 (Realtek Ethernet)
+
+2. Network Stack and Packet Processing
+
+The Linux network stack follows the OSI model, handling data from the physical layer (Ethernet) to the application layer.
+It processes incoming and outgoing packets via:
+
+netif_rx() – Handles received packets.
+
+dev_queue_xmit() – Sends packets.
+
+The kernel also supports interrupt-based processing for high-performance networking.
+
+3. Ethernet Frame Handling
+
+The kernel processes Ethernet frames (Layer 2) by extracting:
+MAC addresses (Source/Destination)
+EtherType (IPv4, IPv6, ARP, etc.)
+
+Payload Data
+The Address Resolution Protocol (ARP) is used to resolve IP addresses to MAC addresses.
+
+4. Packet Filtering & Routing
+
+The Linux kernel uses netfilter (iptables) for packet filtering.
+
+Routing is managed via:
+
+ip route show
+The kernel supports bridging, VLANs, and bonding for advanced networking.
+
+5. Kernel Modules for Ethernet
+
+Ethernet support is modular, with kernel modules (.ko files) loaded dynamically.
+
+You can check loaded Ethernet drivers using:
+
+lsmod | grep net
+Modules can be manually loaded with:
+
+modprobe <module_name>
+
+Conclusion:
+The Linux kernel enables Ethernet communication through a modular driver system, network stack, packet processing, and routing mechanisms, ensuring efficient data transfer.
